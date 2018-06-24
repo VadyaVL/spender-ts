@@ -1,8 +1,9 @@
 import { Tile } from './tile';
 import { PageLayout } from './page-layout';
-import { LeftMenu } from './left-menu';
+import { PageLayoutWithToolbar } from './page-layout-with-toolbar';
 
 export {
   Tile,
   PageLayout,
+  PageLayoutWithToolbar,
 };

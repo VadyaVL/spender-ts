@@ -21,7 +21,20 @@ export class Welcome extends React.Component<Props> {
     return (
       <PageLayout backgroundImage={backgroundImage}>
         <View style={styles.inputs}>
-          <Text>GUU12</Text>
+          <Button
+            text='Categories'
+            style={{text: styles.buttonText}}
+            onPress={() => this.props.navigation.navigate('Category')}
+          />
+          <Button
+            text='Sign IN'
+            style={{text: styles.buttonText}}
+            onPress={() => this.props.navigation.navigate('Spend')}
+          />
+          <Button
+            text='Sign UP'
+            style={{text: styles.buttonText}}
+          />
         </View>
         <View style={styles.actions}>
           <Button
@@ -50,6 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
+    backgroundColor: 'red',
   },
   buttonText: {
     color: 'white',

@@ -3,11 +3,12 @@ import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 
 import { ReduxState } from '../../common/interfaces';
-import { PageLayout } from '../../components';
+import { PageLayoutWithToolbar } from '../../components';
 import { CategoryItem } from './components';
 import { Category } from '../../common/interfaces';
 import autobind from 'autobind-decorator';
 import { Orientation } from '../../common/enums';
+import { NavigationScreenProp } from 'react-navigation';
 
 const backgroundImage = require('./img/background.jpg');
 
@@ -24,18 +25,22 @@ interface ReduxProps {
   categories: Category[];
 }
 
+interface Props extends ReduxProps {
+  navigation: NavigationScreenProp<any, any>;
+};
+
 interface State {
   orientation: Orientation;
 }
 
-class CategoryScreenComponent extends React.Component<ReduxProps, State> {
+class CategoryScreenComponent extends React.Component<Props, State> {
   public static navigationOptions = {
-    header: null,
+    title: 'Categories',
   };
 
-  constructor(props: ReduxProps) {
+  constructor(props: Props) {
     super(props);
-    
+
     this.state = {
       orientation: Orientation.Vertical,
     };
@@ -44,13 +49,16 @@ class CategoryScreenComponent extends React.Component<ReduxProps, State> {
   public render(): JSX.Element {
     const { categories } = this.props;
     return (
-      <PageLayout backgroundImage={backgroundImage}>
+      <PageLayoutWithToolbar
+        backgroundImage={backgroundImage}
+        navigation={this.props.navigation}
+      >
         <ScrollView onLayout={this.onLayout}>
           <View style={styles.container}>
-            {categories.map((category, index): JSX.Element => <CategoryItem key={index} item={category} orientation={this.state.orientation} />)}
+            {categories.map((category, index): JSX.Element => <CategoryItem key={index} item={category} />)}
           </View>
         </ScrollView>
-      </PageLayout>
+      </PageLayoutWithToolbar>
     );
   }
   
@@ -66,7 +74,7 @@ class CategoryScreenComponent extends React.Component<ReduxProps, State> {
 
 const mapStateToProps = (state: ReduxState): ReduxProps => {
   return {
-    categories: [...[...state.category.categories, ...state.category.categories, ...state.category.categories, ...state.category.categories], ...[...state.category.categories, ...state.category.categories, ...state.category.categories, ...state.category.categories]],
+    categories: state.category.categories,
   };
 };
 

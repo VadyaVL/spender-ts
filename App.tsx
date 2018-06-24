@@ -6,6 +6,7 @@ import {
 import {
   createStackNavigator,
   NavigationContainer,
+  createDrawerNavigator,
 } from 'react-navigation';
 import {
   COLOR,
@@ -20,15 +21,47 @@ import {
   CategoryScreen,
 } from './src/screens';
 import { category } from './src/screens/category/reducer';
+import { LeftMenu } from './src/components/left-menu';
 
 const store = createStore(combineReducers({
 	category,
 }));
 
-const StackNavigator: NavigationContainer = createStackNavigator(
+// Article
+
+const stackNavigator: NavigationContainer = createStackNavigator(
+  {
+    Spend: { screen: Spend },
+    /* Category: { screen: CategoryScreen }, */
+  },
+  {
+    headerMode: 'none'
+  },
+);
+
+const Route: NavigationContainer = createDrawerNavigator(
+  {
+    Category: { screen: CategoryScreen },
+    Stack: { screen: stackNavigator },
+  },
+  {
+    initialRouteName: 'Category',
+    contentComponent: LeftMenu,
+    contentOptions: {
+    style: {
+      flex: 1,
+      paddingTop: 15,
+    },
+  }
+});
+
+// End Article
+
+/* const StackNavigator: NavigationContainer = createStackNavigator(
   {
     Welcome: { screen: Welcome },
     Spend: { screen: Spend },
+    Category: { screen: CategoryScreen },
   },
   {
     initialRouteName: 'Welcome',
@@ -42,7 +75,7 @@ const StackNavigator: NavigationContainer = createStackNavigator(
       },
     },
   },
-);
+); */
 
 export default class App extends React.Component {
   public render(): JSX.Element {
@@ -51,7 +84,8 @@ export default class App extends React.Component {
         <ThemeProvider uiTheme={uiTheme}>
           <View style={styles.container}>
             {/* <StackNavigator /> */}
-            <CategoryScreen />
+            {/* <CategoryScreen /> */}
+            <Route />
           </View>
         </ThemeProvider>
 	    </Provider>
