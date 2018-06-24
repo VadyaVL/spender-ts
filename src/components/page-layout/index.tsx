@@ -4,25 +4,24 @@ import {
   ImageBackground,
   ImageSourcePropType,
 } from 'react-native';
-import { Toolbar } from 'react-native-material-ui';
-
-import { LeftMenu } from '../left-menu';
 
 interface Props {
-  backgroundImage: ImageSourcePropType;
+  backgroundImage?: ImageSourcePropType;
 }
 
 export class PageLayout extends React.Component<Props> {
-  private leftMenu: JSX.Element = <LeftMenu />
-
   public render(): JSX.Element {
+    const { backgroundImage } = this.props;
+
+
     return (
-      <ImageBackground source={this.props.backgroundImage} style={styles.backgroundImage}>
-        {/* <Toolbar
-          leftElement={this.leftMenu}
-        /> */}
+      backgroundImage ?
+      <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
           {this.props.children}
-      </ImageBackground>
+      </ImageBackground> :
+      <React.Fragment>
+        {this.props.children}
+      </React.Fragment>
     );
   }
 }

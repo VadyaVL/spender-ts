@@ -1,13 +1,29 @@
 import * as React from 'react';
 import {
-  View, StyleSheet,
+  View,
+  StyleSheet,
 } from 'react-native';
 import {
-  createStackNavigator, NavigationContainer,
+  createStackNavigator,
+  NavigationContainer,
 } from 'react-navigation';
-import { COLOR, ThemeProvider } from 'react-native-material-ui';
+import {
+  COLOR,
+  ThemeProvider,
+} from 'react-native-material-ui';
+import { Provider } from 'react-redux';
+import { combineReducers, createStore } from 'redux';
 
-import { Welcome, Spend } from './src/screens';
+import {
+  Welcome,
+  Spend,
+  CategoryScreen,
+} from './src/screens';
+import { category } from './src/screens/category/reducer';
+
+const store = createStore(combineReducers({
+	category,
+}));
 
 const StackNavigator: NavigationContainer = createStackNavigator(
   {
@@ -31,11 +47,14 @@ const StackNavigator: NavigationContainer = createStackNavigator(
 export default class App extends React.Component {
   public render(): JSX.Element {
     return (
-      <ThemeProvider uiTheme={uiTheme}>
-        <View style={styles.container}>
-          <StackNavigator />
-        </View>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider uiTheme={uiTheme}>
+          <View style={styles.container}>
+            {/* <StackNavigator /> */}
+            <CategoryScreen />
+          </View>
+        </ThemeProvider>
+	    </Provider>
     );
   }
 }
