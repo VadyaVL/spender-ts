@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
+import { NavigationScreenProp } from 'react-navigation';
+import { Action } from 'redux';
 
 import { ReduxState } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
@@ -8,7 +10,7 @@ import { CategoryItem } from './components';
 import { Category } from '../../common/interfaces';
 import autobind from 'autobind-decorator';
 import { Orientation } from '../../common/enums';
-import { NavigationScreenProp } from 'react-navigation';
+import * as actions from './actions';
 
 const backgroundImage = require('./img/background.jpg');
 
@@ -25,7 +27,11 @@ interface ReduxProps {
   categories: Category[];
 }
 
-interface Props extends ReduxProps {
+interface ReduxActions {
+  loadCategories: () => void;
+}
+
+interface Props extends ReduxProps, ReduxActions {
   navigation: NavigationScreenProp<any, any>;
 };
 
@@ -44,6 +50,8 @@ class CategoryScreenComponent extends React.Component<Props, State> {
     this.state = {
       orientation: Orientation.Vertical,
     };
+
+    this.props.loadCategories();
   }
 
   public render(): JSX.Element {
@@ -78,5 +86,13 @@ const mapStateToProps = (state: ReduxState): ReduxProps => {
   };
 };
 
-const connector = connect(mapStateToProps);
+const mapDispathToProps = (dispatch: Dispatch<Action>): ReduxActions => {
+  return {
+    loadCategories: () => {
+      dispatch(actions.loadCategoriesRequest());
+    }
+  };
+};
+
+const connector = connect(mapStateToProps, mapDispathToProps);
 export const CategoryScreen = connector(CategoryScreenComponent);

@@ -51,6 +51,12 @@ export const category = (
   switch (action.type) {
     case ActionTypes.DROP_STATE:
       return state;
+    case ActionTypes.LOAD_REQUEST:
+    console.log('redu-req');
+      return state;
+    case ActionTypes.LOAD_SUCCESS:
+    console.log('redu-suc');
+      return state;
     default:
       return state;
   }

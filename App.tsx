@@ -13,8 +13,10 @@ import {
   ThemeProvider,
 } from 'react-native-material-ui';
 import { Provider } from 'react-redux';
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, applyMiddleware,  } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
+import saga from './src/sagas';
 import {
   Welcome,
   Spend,
@@ -23,9 +25,15 @@ import {
 import { category } from './src/screens/category/reducer';
 import { LeftMenu } from './src/components/left-menu';
 
-const store = createStore(combineReducers({
-	category,
-}));
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  combineReducers({
+    category,
+  }),
+  applyMiddleware(sagaMiddleware),
+);
+sagaMiddleware.run(saga);
 
 // Article
 

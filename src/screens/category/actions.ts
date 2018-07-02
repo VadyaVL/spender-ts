@@ -7,3 +7,15 @@ export function getHomeText(): Action {
     type: ActionTypes.DROP_STATE,
   }
 }
+
+export function loadCategoriesRequest(): Action {
+  return {
+    type: ActionTypes.LOAD_REQUEST,
+  }
+}
+
+export function loadCategoriesSuccess(/**/): Action {
+  return {
+    type: ActionTypes.LOAD_SUCCESS,
+  }
+}
