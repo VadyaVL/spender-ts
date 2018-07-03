@@ -27,8 +27,6 @@ export class PageLayoutWithToolbar extends React.Component<Props> {
 
   @autobind
   private onHamburgerMenuPress(): void {
-    // open menu
-    console.log('Open menu');
     this.props.navigation.openDrawer();
   }
 }

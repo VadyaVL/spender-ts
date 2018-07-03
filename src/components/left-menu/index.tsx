@@ -20,10 +20,10 @@ export class LeftMenu extends React.Component<Props> {
           <React.Fragment>
             <Drawer.Header>
                 <Drawer.Header.Account
-                  avatar={<Avatar text="A" />}
+                  avatar={<Avatar key={0} text="A" />}
                   accounts={[
-                    { avatar: <Avatar text="B" />, },
-                    { avatar: <Avatar text="C" /> },
+                    { avatar: <Avatar key={1} text="B" />, },
+                    { avatar: <Avatar key={2} text="C" /> },
                   ]}
                   footer={{
                     dense: true,

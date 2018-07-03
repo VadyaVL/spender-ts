@@ -43,7 +43,6 @@ function* loadData(): any {
         value: 0,
       },
     ];
-    console.log('saga-req');
 		yield put(actions.loadCategoriesSuccess(loaded));
 	} catch (e) {
 		// console.error(e);
