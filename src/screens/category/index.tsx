@@ -89,6 +89,7 @@ const mapStateToProps = (state: ReduxState): ReduxProps => {
 const mapDispathToProps = (dispatch: Dispatch<Action>): ReduxActions => {
   return {
     loadCategories: () => {
+      // dispatch(actions.saveTestCategory());
       dispatch(actions.loadCategoriesRequest());
     }
   };

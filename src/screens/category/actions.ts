@@ -23,3 +23,10 @@ export function loadCategoriesSuccess(
     payload: categories,
   }
 }
+
+// TEST
+export function saveTestCategory(): Action {
+  return {
+    type: ActionTypes.SAVE_TEST_CATEGORY,
+  }
+}
