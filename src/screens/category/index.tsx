@@ -81,6 +81,7 @@ class CategoryScreenComponent extends React.Component<Props, State> {
 }
 
 const mapStateToProps = (state: ReduxState): ReduxProps => {
+  console.log(state.category);
   return {
     categories: state.category.categories,
   };

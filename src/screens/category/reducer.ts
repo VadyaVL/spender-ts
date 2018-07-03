@@ -1,63 +1,31 @@
-import { Action } from 'redux';
+import { AnyAction } from 'redux';
+import { set } from 'monolite';
 
 import { CategoryState } from './interfaces';
 import * as ActionTypes from './action-types';
+import { ReducerMethods, Category } from '../../common/interfaces';
 
 const INITIAL_STATE: CategoryState = {
-  categories: [
-    {
-      id: 1,
-      title: 'Проїзд',
-      icon: 0,
-      value: 0,
-    },
-    {
-      id: 2,
-      title: 'Інше',
-      icon: 0,
-      value: 0,
-    },
-    {
-      id: 3,
-      title: 'Продукти',
-      icon: 0,
-      value: 0,
-    },
-    {
-      id: 4,
-      title: 'Зовнішність',
-      icon: 0,
-      value: 0,
-    },
-    {
-      id: 5,
-      title: 'TEST_01',
-      icon: 0,
-      value: 0,
-    },
-    {
-      id: 6,
-      title: 'MEDIUM_TEST_01',
-      icon: 0,
-      value: 0,
-    },
-  ],
+  categories: [],
+};
+
+const categoryReducerMethods: ReducerMethods<CategoryState> = {
+  [ActionTypes.DROP_STATE]: () => INITIAL_STATE,
+  [ActionTypes.LOAD_REQUEST]: (state) => state,
+  [ActionTypes.LOAD_SUCCESS]: (state, payload: Category[]) => {
+    console.log('load succ');
+    console.log(payload);
+    return set(state, _ => _.categories)(payload);
+  },
 };
 
 export const category = (
   state: CategoryState = INITIAL_STATE,
-  action: Action = { type: '' }
-) => {
-  switch (action.type) {
-    case ActionTypes.DROP_STATE:
-      return state;
-    case ActionTypes.LOAD_REQUEST:
-    console.log('redu-req');
-      return state;
-    case ActionTypes.LOAD_SUCCESS:
-    console.log('redu-suc');
-      return state;
-    default:
-      return state;
+  action: AnyAction = { type: '', payload: null }
+): CategoryState => {
+  if (action.type in categoryReducerMethods) {
+    return categoryReducerMethods[action.type](state, action.payload);
+  } else {
+    return state;
   }
 }
