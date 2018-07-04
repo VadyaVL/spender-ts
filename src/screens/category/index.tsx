@@ -3,14 +3,16 @@ import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
 import { connect, Dispatch } from 'react-redux';
 import { NavigationScreenProp } from 'react-navigation';
 import { Action } from 'redux';
+import autobind from 'autobind-decorator';
+import { ActionButton } from 'react-native-material-ui';
 
-import { ReduxState } from '../../common/interfaces';
+import { ReduxState, ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
 import { CategoryItem } from './components';
 import { Category } from '../../common/interfaces';
-import autobind from 'autobind-decorator';
 import { Orientation } from '../../common/enums';
 import * as actions from './actions';
+import { OPEN_MENU } from '../../common/consts';
 
 const backgroundImage = require('./img/background.jpg');
 
@@ -44,6 +46,13 @@ class CategoryScreenComponent extends React.Component<Props, State> {
     title: 'Categories',
   };
 
+  private actions: string[] = ['Add category'];
+  private toolbarParams: ToolbarParams = {
+    centerElement: 'Categories',
+    leftElement: 'menu',
+    action: OPEN_MENU,
+  };
+
   constructor(props: Props) {
     super(props);
 
@@ -60,14 +69,21 @@ class CategoryScreenComponent extends React.Component<Props, State> {
       <PageLayoutWithToolbar
         backgroundImage={backgroundImage}
         navigation={this.props.navigation}
+        toolbarParams={this.toolbarParams}
       >
         <ScrollView onLayout={this.onLayout}>
           <View style={styles.container}>
             {categories.map((category, index): JSX.Element => <CategoryItem key={index} item={category} />)}
           </View>
         </ScrollView>
+        <ActionButton actions={this.actions} onPress={this.onActionBtnPress} />
       </PageLayoutWithToolbar>
     );
+  }
+
+  @autobind
+  private onActionBtnPress(): void {
+    this.props.navigation.navigate('CategoryEdit')
   }
   
   @autobind

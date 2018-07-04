@@ -34,8 +34,7 @@ export class PageLayout extends React.Component<Props> {
 
 var styles = StyleSheet.create({
   backgroundImage: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
   },
   statusBar: {
     backgroundColor: COLOR.green500,

@@ -21,6 +21,7 @@ import {
   Welcome,
   Spend,
   CategoryScreen,
+  CategoryEditScreen,
 } from './src/screens';
 import { category } from './src/screens/category/reducer';
 import { LeftMenu } from './src/components/left-menu';
@@ -37,23 +38,25 @@ sagaMiddleware.run(saga);
 
 // Article
 
-const stackNavigator: NavigationContainer = createStackNavigator(
+const categoryStackNavigator: NavigationContainer = createStackNavigator(
   {
-    Spend: { screen: Spend },
-    /* Category: { screen: CategoryScreen }, */
+    Category: { screen: CategoryScreen },
+    CategoryEdit: { screen: CategoryEditScreen },
   },
   {
-    headerMode: 'none'
+    initialRouteName: 'Category',
+    headerMode: 'none',
   },
 );
 
 const Route: NavigationContainer = createDrawerNavigator(
   {
-    Category: { screen: CategoryScreen },
-    Stack: { screen: stackNavigator },
+    CategoryStack: { screen: categoryStackNavigator },
+    //CategoryEdit: { screen: CategoryEditScreen },
+    //Stack: { screen: stackNavigator },
   },
   {
-    initialRouteName: 'Category',
+    initialRouteName: 'CategoryStack',
     contentComponent: LeftMenu,
     contentOptions: {
     style: {

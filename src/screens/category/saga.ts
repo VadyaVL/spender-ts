@@ -8,7 +8,7 @@ import { Category } from '../../common/interfaces';
 function* loadData(): any {
 	try {
 		const data: Category[] = yield call(db.getCategories);
-		yield put(actions.loadCategoriesSuccess(data));
+		yield put(actions.loadCategoriesSuccess(data ? data : []));
 	} catch (e) {
 		// console.error(e);
 	}
