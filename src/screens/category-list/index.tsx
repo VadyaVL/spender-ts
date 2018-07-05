@@ -39,7 +39,6 @@ interface Props extends ReduxProps, ReduxActions {
 
 interface State {
   orientation: Orientation;
-  active: string;
 }
 
 class CategoryListScreenComponent extends React.Component<Props, State> {
@@ -59,7 +58,6 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
 
     this.state = {
       orientation: Orientation.Vertical,
-      active: '',
     };
 
     this.props.loadCategories();
@@ -79,34 +77,13 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
           </View>
         </ScrollView>
         {/* <ActionButton actions={this.actions} onPress={this.onActionBtnPress} /> */}
-        <BottomNavigation active={this.state.active} hidden={true} >
+        <BottomNavigation>
           <BottomNavigation.Action
-              key="today"
-              icon="today"
-              label="Today"
-              onPress={() => this.setState({ active: 'today' })}
-              active={this.state.active === 'today'}
-          />
-          <BottomNavigation.Action
-              key="people"
-              icon="people"
-              label="People"
-              onPress={() => this.setState({ active: 'people' })}
-              active={this.state.active === 'people'}
-          />
-          <BottomNavigation.Action
-              key="bookmark-border"
-              icon="bookmark-border"
-              label="Bookmark"
-              onPress={() => this.setState({ active: 'bookmark-border' })}
-              active={this.state.active === 'bookmark-border'}
-          />
-          <BottomNavigation.Action
-              key="settings"
-              icon="settings"
-              label="Settings"
-              onPress={() => this.setState({ active: 'settings' })}
-              active={this.state.active === 'settings'}
+              key='expense'
+              icon='shopping-cart'
+              label='Expense'
+              onPress={this.onExpensePress}
+              active={false}
           />
       </BottomNavigation>
       </PageLayoutWithToolbar>
@@ -114,8 +91,13 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
   }
 
   @autobind
+  private onExpensePress(): void {
+    this.props.navigation.navigate('Expense');
+  }
+
+  @autobind
   private onActionBtnPress(): void {
-    this.props.navigation.navigate('CategoryEdit')
+    this.props.navigation.navigate('CategoryEdit');
   }
   
   @autobind
