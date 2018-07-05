@@ -1,4 +1,4 @@
-const prefix = 'category';
+const prefix = 'category-list';
 
 export const DROP_STATE = `${prefix}/DROP_STATE`;
 export const LOAD_REQUEST = `${prefix}/LOAD_REQUEST`;

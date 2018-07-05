@@ -4,7 +4,7 @@ import { connect, Dispatch } from 'react-redux';
 import { NavigationScreenProp } from 'react-navigation';
 import { Action } from 'redux';
 import autobind from 'autobind-decorator';
-import { ActionButton } from 'react-native-material-ui';
+import { ActionButton, BottomNavigation } from 'react-native-material-ui';
 
 import { ReduxState, ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
@@ -39,9 +39,10 @@ interface Props extends ReduxProps, ReduxActions {
 
 interface State {
   orientation: Orientation;
+  active: string;
 }
 
-class CategoryScreenComponent extends React.Component<Props, State> {
+class CategoryListScreenComponent extends React.Component<Props, State> {
   public static navigationOptions = {
     title: 'Categories',
   };
@@ -58,6 +59,7 @@ class CategoryScreenComponent extends React.Component<Props, State> {
 
     this.state = {
       orientation: Orientation.Vertical,
+      active: '',
     };
 
     this.props.loadCategories();
@@ -76,7 +78,37 @@ class CategoryScreenComponent extends React.Component<Props, State> {
             {categories.map((category, index): JSX.Element => <CategoryItem key={index} item={category} />)}
           </View>
         </ScrollView>
-        <ActionButton actions={this.actions} onPress={this.onActionBtnPress} />
+        {/* <ActionButton actions={this.actions} onPress={this.onActionBtnPress} /> */}
+        <BottomNavigation active={this.state.active} hidden={true} >
+          <BottomNavigation.Action
+              key="today"
+              icon="today"
+              label="Today"
+              onPress={() => this.setState({ active: 'today' })}
+              active={this.state.active === 'today'}
+          />
+          <BottomNavigation.Action
+              key="people"
+              icon="people"
+              label="People"
+              onPress={() => this.setState({ active: 'people' })}
+              active={this.state.active === 'people'}
+          />
+          <BottomNavigation.Action
+              key="bookmark-border"
+              icon="bookmark-border"
+              label="Bookmark"
+              onPress={() => this.setState({ active: 'bookmark-border' })}
+              active={this.state.active === 'bookmark-border'}
+          />
+          <BottomNavigation.Action
+              key="settings"
+              icon="settings"
+              label="Settings"
+              onPress={() => this.setState({ active: 'settings' })}
+              active={this.state.active === 'settings'}
+          />
+      </BottomNavigation>
       </PageLayoutWithToolbar>
     );
   }
@@ -98,7 +130,7 @@ class CategoryScreenComponent extends React.Component<Props, State> {
 
 const mapStateToProps = (state: ReduxState): ReduxProps => {
   return {
-    categories: state.category.categories,
+    categories: state.categoryList.categories,
   };
 };
 
@@ -112,4 +144,4 @@ const mapDispathToProps = (dispatch: Dispatch<Action>): ReduxActions => {
 };
 
 const connector = connect(mapStateToProps, mapDispathToProps);
-export const CategoryScreen = connector(CategoryScreenComponent);
+export const CategoryListScreen = connector(CategoryListScreenComponent);

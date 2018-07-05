@@ -1,5 +1,5 @@
 import { Category } from '../../../common/interfaces';
 
-export interface CategoryState {
+export interface CategoryListState {
   readonly categories: Category[];
 }

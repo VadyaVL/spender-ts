@@ -1,15 +1,15 @@
 import { AnyAction } from 'redux';
 import { set } from 'monolite';
 
-import { CategoryState } from './interfaces';
+import { CategoryListState } from './interfaces';
 import * as ActionTypes from './action-types';
 import { ReducerMethods, Category } from '../../common/interfaces';
 
-const INITIAL_STATE: CategoryState = {
+const INITIAL_STATE: CategoryListState = {
   categories: [],
 };
 
-const categoryReducerMethods: ReducerMethods<CategoryState> = {
+const categoryReducerMethods: ReducerMethods<CategoryListState> = {
   [ActionTypes.DROP_STATE]: () => INITIAL_STATE,
   [ActionTypes.LOAD_REQUEST]: (state) => state,
   [ActionTypes.LOAD_SUCCESS]: (state, payload: Category[]) => {
@@ -19,10 +19,10 @@ const categoryReducerMethods: ReducerMethods<CategoryState> = {
   },
 };
 
-export const category = (
-  state: CategoryState = INITIAL_STATE,
+export const categoryList = (
+  state: CategoryListState = INITIAL_STATE,
   action: AnyAction = { type: '', payload: null }
-): CategoryState => {
+): CategoryListState => {
   if (action.type in categoryReducerMethods) {
     return categoryReducerMethods[action.type](state, action.payload);
   } else {

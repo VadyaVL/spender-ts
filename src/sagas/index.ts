@@ -1,9 +1,9 @@
 import { fork, all } from 'redux-saga/effects';
 
-import { category } from '../screens/category/saga';
+import { categoryList } from '../screens/category-list/saga';
 
 export default function* saga() {
   yield all([
-    fork(category)
+    fork(categoryList)
   ]);
 }

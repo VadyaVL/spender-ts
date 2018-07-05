@@ -1,11 +1,11 @@
 import { Welcome } from './welcome';
-import { Spend } from './spend';
-import { CategoryScreen } from './category';
+import { ExpenseScreen } from './expense';
+import { CategoryListScreen } from './category-list';
 import { CategoryEditScreen } from './category-edit';
 
 export {
   Welcome,
-  Spend,
-  CategoryScreen,
+  ExpenseScreen,
+  CategoryListScreen,
   CategoryEditScreen,
 }

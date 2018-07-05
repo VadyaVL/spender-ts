@@ -19,18 +19,18 @@ import createSagaMiddleware from 'redux-saga';
 import saga from './src/sagas';
 import {
   Welcome,
-  Spend,
-  CategoryScreen,
+  ExpenseScreen,
+  CategoryListScreen,
   CategoryEditScreen,
 } from './src/screens';
-import { category } from './src/screens/category/reducer';
+import { categoryList } from './src/screens/category-list/reducer';
 import { LeftMenu } from './src/components/left-menu';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   combineReducers({
-    category,
+    categoryList,
   }),
   applyMiddleware(sagaMiddleware),
 );
@@ -40,11 +40,12 @@ sagaMiddleware.run(saga);
 
 const categoryStackNavigator: NavigationContainer = createStackNavigator(
   {
-    Category: { screen: CategoryScreen },
+    CategoryList: { screen: CategoryListScreen },
     CategoryEdit: { screen: CategoryEditScreen },
+    Expense: { screen: ExpenseScreen },
   },
   {
-    initialRouteName: 'Category',
+    initialRouteName: 'CategoryList',
     headerMode: 'none',
   },
 );

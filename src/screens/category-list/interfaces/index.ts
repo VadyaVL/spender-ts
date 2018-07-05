@@ -1,7 +1,7 @@
 import {
-  CategoryState,
+  CategoryListState,
 } from './redux-state';
 
 export {
-  CategoryState,
+  CategoryListState,
 };

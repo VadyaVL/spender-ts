@@ -18,7 +18,7 @@ export class LeftMenu extends React.Component<Props> {
       <PageLayout {...this.props}>
         <Drawer>
           <React.Fragment>
-            <Drawer.Header>
+            {/* <Drawer.Header>
                 <Drawer.Header.Account
                   avatar={<Avatar key={0} text="A" />}
                   accounts={[
@@ -34,7 +34,7 @@ export class LeftMenu extends React.Component<Props> {
                     rightElement: 'arrow-drop-down',
                   }}
                 />
-            </Drawer.Header>
+            </Drawer.Header> */}
             <Drawer.Section
               divider={true}
               items={[

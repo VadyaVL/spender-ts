@@ -1,5 +1,5 @@
-import { CategoryState } from '../../screens/category/interfaces';
+import { CategoryListState } from '../../screens/category-list/interfaces';
 
 export interface ReduxState {
-  readonly category: CategoryState;
+  readonly categoryList: CategoryListState;
 }

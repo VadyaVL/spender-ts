@@ -22,7 +22,7 @@ function* saveTestCategory(): any {
 	}
 } 
 
-export function* category(): any {
+export function* categoryList(): any {
 	yield takeLatest(
 		actionTypes.LOAD_REQUEST,
 		loadData,
