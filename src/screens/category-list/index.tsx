@@ -11,7 +11,7 @@ import { PageLayoutWithToolbar } from '../../components';
 import { CategoryItem } from './components';
 import { Category } from '../../common/interfaces';
 import { Orientation } from '../../common/enums';
-import * as actions from './actions';
+import { Actions } from './actions';
 import { OPEN_MENU } from '../../common/consts';
 
 const backgroundImage = require('./img/background.jpg');
@@ -120,7 +120,7 @@ const mapDispathToProps = (dispatch: Dispatch<Action>): ReduxActions => {
   return {
     loadCategories: () => {
       // dispatch(actions.saveTestCategory());
-      dispatch(actions.loadCategoriesRequest());
+      dispatch(Actions.loadCategoriesRequest());
     }
   };
 };

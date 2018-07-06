@@ -1,14 +1,13 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 
-import * as actionTypes from './action-types';
-import * as actions from './actions';
+import { Actions, ActionTypes } from './actions';
 import * as db from './db';
 import { Category } from '../../common/interfaces';
 
 function* loadData(): any {
 	try {
 		const data: Category[] = yield call(db.getCategories);
-		yield put(actions.loadCategoriesSuccess(data ? data : []));
+		yield put(Actions.loadCategoriesSuccess(data ? data : []));
 	} catch (e) {
 		// console.error(e);
 	}
@@ -24,11 +23,11 @@ function* saveTestCategory(): any {
 
 export function* categoryList(): any {
 	yield takeLatest(
-		actionTypes.LOAD_REQUEST,
+		ActionTypes.LOAD_REQUEST,
 		loadData,
 	);
 	yield takeLatest(
-		actionTypes.SAVE_TEST_CATEGORY,
+		ActionTypes.SAVE_TEST_CATEGORY,
 		saveTestCategory,
 	);
 }

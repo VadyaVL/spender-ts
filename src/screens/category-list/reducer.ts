@@ -2,7 +2,7 @@ import { AnyAction } from 'redux';
 import { set } from 'monolite';
 
 import { CategoryListState } from './interfaces';
-import * as ActionTypes from './action-types';
+import { ActionTypes } from './actions';
 import { ReducerMethods, Category } from '../../common/interfaces';
 
 const INITIAL_STATE: CategoryListState = {

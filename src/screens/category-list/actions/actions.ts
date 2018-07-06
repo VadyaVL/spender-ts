@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 
-import * as ActionTypes from './action-types';
-import { ExpandedAction, Category } from '../../common/interfaces';
+import * as ActionTypes from './types';
+import { ExpandedAction, Category } from '../../../common/interfaces';
 
 export function getHomeText(): Action {
   return {
