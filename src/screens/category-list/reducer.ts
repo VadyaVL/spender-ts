@@ -1,9 +1,9 @@
-import { AnyAction } from 'redux';
 import { set } from 'monolite';
+import { AnyAction } from 'redux';
 
-import { CategoryListState } from './interfaces';
+import { Category, ReducerMethods } from '../../common/interfaces';
 import { ActionTypes } from './actions';
-import { ReducerMethods, Category } from '../../common/interfaces';
+import { CategoryListState } from './interfaces';
 
 const INITIAL_STATE: CategoryListState = {
   categories: [],
@@ -21,11 +21,11 @@ const categoryReducerMethods: ReducerMethods<CategoryListState> = {
 
 export const categoryList = (
   state: CategoryListState = INITIAL_STATE,
-  action: AnyAction = { type: '', payload: null }
+  action: AnyAction = { type: '', payload: null },
 ): CategoryListState => {
   if (action.type in categoryReducerMethods) {
     return categoryReducerMethods[action.type](state, action.payload);
   } else {
     return state;
   }
-}
+};

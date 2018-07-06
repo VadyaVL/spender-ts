@@ -46,14 +46,14 @@ export const saveTestCategory = async (): Promise<void> => {
         value: 0,
       },
     ];
-    //const dictonary = loaded.map((category) => [`${CATEGORY_KEY}_${category.id}`, JSON.stringify(category)]);
+    // const dictonary = loaded.map((category) => [`${CATEGORY_KEY}_${category.id}`, JSON.stringify(category)]);
 
-    //return await AsyncStorage.multiSet(dictonary);
+    // return await AsyncStorage.multiSet(dictonary);
     return await AsyncStorage.setItem(CATEGORIES_KEY, JSON.stringify(loaded));
   } catch (error) {
     // Error saving data
   }
-}
+};
 
 export const getCategories = async (): Promise<Category[]> => {
   try {
@@ -63,4 +63,4 @@ export const getCategories = async (): Promise<Category[]> => {
   }
 
   return [];
-}
+};

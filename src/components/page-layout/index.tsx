@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
-  StyleSheet,
   ImageBackground,
   ImageSourcePropType,
   StatusBar,
+  StyleSheet,
   View,
 } from 'react-native';
 import { COLOR } from 'react-native-material-ui';
@@ -15,7 +15,6 @@ interface Props {
 export class PageLayout extends React.Component<Props> {
   public render(): JSX.Element {
     const { backgroundImage } = this.props;
-
 
     return (
       <React.Fragment>
@@ -32,12 +31,12 @@ export class PageLayout extends React.Component<Props> {
   }
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
   },
   statusBar: {
     backgroundColor: COLOR.green500,
     height: 24,
-  }
+  },
 });

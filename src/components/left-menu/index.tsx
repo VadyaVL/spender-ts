@@ -1,15 +1,12 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Avatar, Drawer } from 'react-native-material-ui';
-import { PageLayout } from '..';
-import { NavigationScreenProp } from 'react-navigation';
 
-const styles = StyleSheet.create({
-  
-});
+import { NavigationScreenProp } from 'react-navigation';
+import { PageLayout } from '..';
 
 interface Props {
-  navigation: NavigationScreenProp<any,any>;
+  navigation: NavigationScreenProp<any, any>;
 }
 
 export class LeftMenu extends React.Component<Props> {
@@ -44,7 +41,7 @@ export class LeftMenu extends React.Component<Props> {
               ]}
             />
             <Drawer.Section
-              title="Personal"
+              title='Personal'
               items={[
                 { icon: 'info', value: 'Info' },
                 { icon: 'settings', value: 'Settings' },

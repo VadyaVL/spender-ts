@@ -1,20 +1,19 @@
-import * as React from 'react';
-import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
-import { connect, Dispatch } from 'react-redux';
-import { NavigationScreenProp } from 'react-navigation';
-import { Action } from 'redux';
 import autobind from 'autobind-decorator';
+import * as React from 'react';
+import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import { ActionButton, BottomNavigation } from 'react-native-material-ui';
+import { NavigationScreenProp } from 'react-navigation';
+import { connect, Dispatch } from 'react-redux';
+import { Action } from 'redux';
 
-import { ReduxState, ToolbarParams } from '../../common/interfaces';
-import { PageLayoutWithToolbar } from '../../components';
-import { CategoryItem } from './components';
-import { Category } from '../../common/interfaces';
-import { Orientation } from '../../common/enums';
-import { Actions } from './actions';
 import { OPEN_MENU } from '../../common/consts';
+import { Orientation } from '../../common/enums';
+import { Category, ReduxState, ToolbarParams } from '../../common/interfaces';
+import { PageLayoutWithToolbar } from '../../components';
+import { Actions } from './actions';
+import { CategoryItem } from './components';
 
-const backgroundImage = require('./img/background.jpg');
+import backgroundImage from './img/background.jpg';
 
 const styles = StyleSheet.create({
   container: {
@@ -35,7 +34,7 @@ interface ReduxActions {
 
 interface Props extends ReduxProps, ReduxActions {
   navigation: NavigationScreenProp<any, any>;
-};
+}
 
 interface State {
   orientation: Orientation;
@@ -99,7 +98,7 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
   private onActionBtnPress(): void {
     this.props.navigation.navigate('CategoryEdit');
   }
-  
+
   @autobind
   private onLayout(): void {
     const { width, height } = Dimensions.get('window');
@@ -121,7 +120,7 @@ const mapDispathToProps = (dispatch: Dispatch<Action>): ReduxActions => {
     loadCategories: () => {
       // dispatch(actions.saveTestCategory());
       dispatch(Actions.loadCategoriesRequest());
-    }
+    },
   };
 };
 

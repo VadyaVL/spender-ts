@@ -1,30 +1,33 @@
 import * as React from 'react';
 import {
-  View,
   StyleSheet,
+  View,
 } from 'react-native';
-import {
-  createStackNavigator,
-  NavigationContainer,
-  createDrawerNavigator,
-} from 'react-navigation';
 import {
   COLOR,
   ThemeProvider,
 } from 'react-native-material-ui';
+import {
+  createDrawerNavigator,
+  createStackNavigator,
+  NavigationContainer,
+} from 'react-navigation';
 import { Provider } from 'react-redux';
-import { combineReducers, createStore, applyMiddleware,  } from 'redux';
+import {
+  applyMiddleware,
+  combineReducers,
+  createStore,
+} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
+import { LeftMenu } from './src/components/left-menu';
 import saga from './src/sagas';
 import {
-  Welcome,
-  ExpenseScreen,
-  CategoryListScreen,
   CategoryEditScreen,
+  CategoryListScreen,
+  ExpenseScreen,
 } from './src/screens';
 import { categoryList } from './src/screens/category-list/reducer';
-import { LeftMenu } from './src/components/left-menu';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -53,8 +56,8 @@ const categoryStackNavigator: NavigationContainer = createStackNavigator(
 const Route: NavigationContainer = createDrawerNavigator(
   {
     CategoryStack: { screen: categoryStackNavigator },
-    //CategoryEdit: { screen: CategoryEditScreen },
-    //Stack: { screen: stackNavigator },
+    // CategoryEdit: { screen: CategoryEditScreen },
+    // Stack: { screen: stackNavigator },
   },
   {
     initialRouteName: 'CategoryStack',
@@ -64,7 +67,7 @@ const Route: NavigationContainer = createDrawerNavigator(
       flex: 1,
       paddingTop: 15,
     },
-  }
+  },
 });
 
 // End Article
@@ -100,7 +103,7 @@ export default class App extends React.Component {
             <Route />
           </View>
         </ThemeProvider>
-	    </Provider>
+      </Provider>
     );
   }
 }

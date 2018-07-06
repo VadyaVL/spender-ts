@@ -1,16 +1,16 @@
-import { Toolbar } from 'react-native-material-ui';
+import autobind from 'autobind-decorator';
 import * as React from 'react';
 import { ImageSourcePropType } from 'react-native';
-import autobind from 'autobind-decorator';
+import { Toolbar } from 'react-native-material-ui';
 
-import { PageLayout } from '../page-layout';
 import { NavigationScreenProp } from 'react-navigation';
+import { CLOSE_SCREEN, OPEN_MENU } from '../../common/consts';
 import { ToolbarParams } from '../../common/interfaces';
-import { OPEN_MENU, CLOSE_SCREEN } from '../../common/consts';
+import { PageLayout } from '../page-layout';
 
 interface Props {
   backgroundImage?: ImageSourcePropType;
-  navigation: NavigationScreenProp<any,any>;
+  navigation: NavigationScreenProp<any, any>;
   toolbarParams: ToolbarParams;
 }
 
@@ -35,13 +35,14 @@ export class PageLayoutWithToolbar extends React.Component<Props> {
   private onLeftElementPress(): void {
     const { toolbarParams } = this.props;
 
-    switch(toolbarParams.action){
+    switch (toolbarParams.action) {
       case OPEN_MENU:
         this.props.navigation.openDrawer();
         break;
       case CLOSE_SCREEN:
         this.props.navigation.pop();
         break;
+      default:
     }
   }
 }

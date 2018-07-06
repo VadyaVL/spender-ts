@@ -1,15 +1,16 @@
+import autobind from 'autobind-decorator';
 import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-material-ui';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { PageLayout } from '../../components'
+import { PageLayout } from '../../components';
 
-const backgroundImage = require('./img/background.jpg');
+import backgroundImage from './img/background.jpg';
 
 interface Props {
-  navigation: NavigationScreenProp<any,any>;
-};
+  navigation: NavigationScreenProp<any, any>;
+}
 
 export class Welcome extends React.Component<Props> {
 
@@ -24,12 +25,12 @@ export class Welcome extends React.Component<Props> {
           <Button
             text='Categories'
             style={{text: styles.buttonText}}
-            onPress={() => this.props.navigation.navigate('Category')}
+            onPress={this.navigateToCategory}
           />
           <Button
             text='Sign IN'
             style={{text: styles.buttonText}}
-            onPress={() => this.props.navigation.navigate('Spend')}
+            onPress={this.navigateToSpend}
           />
           <Button
             text='Sign UP'
@@ -40,7 +41,7 @@ export class Welcome extends React.Component<Props> {
           <Button
             text='Sign IN'
             style={{text: styles.buttonText}}
-            onPress={() => this.props.navigation.navigate('Spend')}
+            onPress={this.navigateToSpend}
           />
           <Button
             text='Sign UP'
@@ -50,13 +51,23 @@ export class Welcome extends React.Component<Props> {
       </PageLayout>
     );
   }
+
+  @autobind
+  private navigateToCategory() {
+    this.props.navigation.navigate('Category');
+  }
+
+  @autobind
+  private navigateToSpend() {
+    this.props.navigation.navigate('Spend');
+  }
 }
 
 const styles = StyleSheet.create({
   inputs: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   actions: {
     flex: 1,

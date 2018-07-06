@@ -1,0 +1,68 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+      "tslint:latest",
+      "tslint-react"
+    ],
+    "jsRules": {},
+    "rules": {
+      "ordered-imports": true,
+      "jsx-no-lambda": true,
+      "max-line-length": [
+        true,
+        120
+      ],
+      "member-ordering": [
+        true,
+        {
+          "order": [
+            "public-static-field",
+            "public-instance-field",
+            "protected-static-field",
+            "protected-instance-field",
+            "private-static-field",
+            "private-instance-field",
+            "public-constructor",
+            "protected-constructor",
+            "private-constructor",
+            "public-static-method",
+            "public-instance-method",
+            "protected-static-method",
+            "protected-instance-method",
+            "private-static-method",
+            "private-instance-method"
+          ]
+        }
+      ],
+      "no-any": false,
+      "no-console": [
+        true,
+        "debug",
+        "info",
+        "time",
+        "timeEnd",
+        "trace",
+        "log"
+      ],
+      "quotemark": [
+        true,
+        "single"
+      ],
+      "semicolon": [
+        true,
+        "always"
+      ],
+      "switch-default": true,
+      "switch-final-break": true,
+      "triple-equals": [
+        true,
+        "allow-null-check"
+      ],
+      "jsx-wrap-multiline": false,
+      "object-literal-sort-keys": false,
+      "interface-name": false,
+      "no-submodule-imports": false,
+      "jsx-no-multiline-js": false
+    },
+    "rulesDirectory": []
+}

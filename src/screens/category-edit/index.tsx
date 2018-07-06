@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, View, ScrollView, Dimensions, Text } from 'react-native';
-import { connect, Dispatch } from 'react-redux';
+import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
+import { connect, Dispatch } from 'react-redux';
 import { Action } from 'redux';
 
+import { CLOSE_SCREEN } from '../../common/consts';
 import { ReduxState, ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
-import { CLOSE_SCREEN } from '../../common/consts';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,15 +16,17 @@ const styles = StyleSheet.create({
   },
 });
 
+// tslint:disable-next-line:no-empty-interface
 interface ReduxProps {
 }
 
+// tslint:disable-next-line:no-empty-interface
 interface ReduxActions {
 }
 
 interface Props extends ReduxProps, ReduxActions {
   navigation: NavigationScreenProp<any, any>;
-};
+}
 
 class CategoryEditScreenComponent extends React.Component<Props> {
   public static navigationOptions = {

@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
-import { PageLayoutWithToolbar } from '../../components';
-import { ToolbarParams } from '../../common/interfaces';
+
 import { CLOSE_SCREEN } from '../../common/consts';
+import { ToolbarParams } from '../../common/interfaces';
+import { PageLayoutWithToolbar } from '../../components';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,15 +14,17 @@ const styles = StyleSheet.create({
   },
 });
 
+// tslint:disable-next-line:no-empty-interface
 interface ReduxProps {
 }
 
+// tslint:disable-next-line:no-empty-interface
 interface ReduxActions {
 }
 
 interface Props extends ReduxProps, ReduxActions {
   navigation: NavigationScreenProp<any, any>;
-};
+}
 
 export class ExpenseScreen extends React.Component<Props> {
   public static navigationOptions = {

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-import { Category } from '../../../common/interfaces';
 import { CURRENCY } from '../../../common/consts';
+import { Category } from '../../../common/interfaces';
 
-const spendImage = require('../img/spend.jpg');
+import spendImage from '../img/spend.jpg';
 
 const styles = StyleSheet.create({
   outerContainer: {
@@ -35,8 +35,6 @@ interface Props {
 }
 
 export class CategoryItem extends React.Component<Props> {
- 
-  
   public render(): JSX.Element {
     const { item } = this.props;
 
