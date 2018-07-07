@@ -1,12 +1,12 @@
 import autobind from 'autobind-decorator';
 import * as React from 'react';
-import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
-import { ActionButton, BottomNavigation } from 'react-native-material-ui';
+import { Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
+import { ActionButton } from 'react-native-material-ui';
 import { NavigationScreenProp } from 'react-navigation';
 import { connect, Dispatch } from 'react-redux';
 import { Action } from 'redux';
 
-import { OPEN_MENU } from '../../common/consts';
+import { CLOSE_SCREEN } from '../../common/consts';
 import { Orientation } from '../../common/enums';
 import { Category, ReduxState, ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
@@ -32,8 +32,12 @@ interface ReduxActions {
   loadCategories: () => void;
 }
 
+export interface CategoryListNavigationProps {
+  test: string;
+}
+
 interface Props extends ReduxProps, ReduxActions {
-  navigation: NavigationScreenProp<any, any>;
+  navigation: NavigationScreenProp<any, CategoryListNavigationProps>;
 }
 
 interface State {
@@ -48,8 +52,8 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
   private actions: string[] = ['Add category'];
   private toolbarParams: ToolbarParams = {
     centerElement: 'Categories',
-    leftElement: 'menu',
-    action: OPEN_MENU,
+    leftElement: 'keyboard-arrow-left',
+    action: CLOSE_SCREEN,
   };
 
   constructor(props: Props) {
@@ -63,7 +67,8 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
   }
 
   public render(): JSX.Element {
-    const { categories } = this.props;
+    const { categories, navigation } = this.props;
+    const test: string = this.props.navigation.getParam('test', '');
     return (
       <PageLayoutWithToolbar
         backgroundImage={backgroundImage}
@@ -71,27 +76,14 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
         toolbarParams={this.toolbarParams}
       >
         <ScrollView onLayout={this.onLayout}>
+          <Text>{test}</Text>
           <View style={styles.container}>
             {categories.map((category, index): JSX.Element => <CategoryItem key={index} item={category} />)}
           </View>
         </ScrollView>
-        {/* <ActionButton actions={this.actions} onPress={this.onActionBtnPress} /> */}
-        <BottomNavigation>
-          <BottomNavigation.Action
-              key='expense'
-              icon='shopping-cart'
-              label='Expense'
-              onPress={this.onExpensePress}
-              active={false}
-          />
-      </BottomNavigation>
+        <ActionButton actions={this.actions} onPress={this.onActionBtnPress} />
       </PageLayoutWithToolbar>
     );
-  }
-
-  @autobind
-  private onExpensePress(): void {
-    this.props.navigation.navigate('Expense');
   }
 
   @autobind

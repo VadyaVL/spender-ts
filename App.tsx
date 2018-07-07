@@ -26,6 +26,7 @@ import {
   CategoryEditScreen,
   CategoryListScreen,
   ExpenseScreen,
+  MainScreen,
 } from './src/screens';
 import { categoryList } from './src/screens/category-list/reducer';
 
@@ -43,12 +44,13 @@ sagaMiddleware.run(saga);
 
 const categoryStackNavigator: NavigationContainer = createStackNavigator(
   {
+    Main: { screen: MainScreen },
     CategoryList: { screen: CategoryListScreen },
     CategoryEdit: { screen: CategoryEditScreen },
     Expense: { screen: ExpenseScreen },
   },
   {
-    initialRouteName: 'CategoryList',
+    initialRouteName: 'Main',
     headerMode: 'none',
   },
 );
