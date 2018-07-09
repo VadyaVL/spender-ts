@@ -2,6 +2,7 @@ import autobind from 'autobind-decorator';
 import * as React from 'react';
 import { Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
 import { ActionButton } from 'react-native-material-ui';
+import SortableGrid from 'react-native-sortable-grid';
 import { NavigationScreenProp } from 'react-navigation';
 import { connect, Dispatch } from 'react-redux';
 import { Action } from 'redux';
@@ -10,6 +11,7 @@ import { CLOSE_SCREEN } from '../../common/consts';
 import { Orientation } from '../../common/enums';
 import { Category, ReduxState, ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
+import { Actions as CategoryEditActions } from '../category-edit/actions';
 import { Actions } from './actions';
 import { CategoryItem } from './components';
 
@@ -30,6 +32,7 @@ interface ReduxProps {
 
 interface ReduxActions {
   loadCategories: () => void;
+  createCategory: () => void;
 }
 
 export interface CategoryListNavigationProps {
@@ -77,9 +80,15 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
       >
         <ScrollView onLayout={this.onLayout}>
           <Text>{test}</Text>
+          {/* NOT GRID, NOT SORT, PRIMITIVE */}
           <View style={styles.container}>
             {categories.map((category, index): JSX.Element => <CategoryItem key={index} item={category} />)}
           </View>
+          {/* <SortableGrid itemsPerRow={4} >
+          {
+            categories.map((category, index): JSX.Element => <CategoryItem key={index} item={category} />)
+          }
+          </SortableGrid> */}
         </ScrollView>
         <ActionButton actions={this.actions} onPress={this.onActionBtnPress} />
       </PageLayoutWithToolbar>
@@ -88,6 +97,7 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
 
   @autobind
   private onActionBtnPress(): void {
+    this.props.createCategory();
     this.props.navigation.navigate('CategoryEdit');
   }
 
@@ -112,6 +122,14 @@ const mapDispathToProps = (dispatch: Dispatch<Action>): ReduxActions => {
     loadCategories: () => {
       // dispatch(actions.saveTestCategory());
       dispatch(Actions.loadCategoriesRequest());
+    },
+    createCategory: () => {
+      dispatch(CategoryEditActions.setCurrent({
+        id: 0,
+        title: '',
+        icon: 0,
+        value: 0,
+      }));
     },
   };
 };

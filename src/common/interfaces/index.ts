@@ -1,7 +1,7 @@
 import { Category, Expense } from './data';
-import { ReduxState } from './redux-state';
 import { ExpandedAction } from './expanded-action';
 import { ReducerMethods } from './reducer-methods';
+import { ReduxState } from './redux-state';
 import { ToolbarParams } from './toolbar-params';
 
 export {
@@ -9,7 +9,7 @@ export {
   ExpandedAction,
   ReducerMethods,
   ToolbarParams,
-  
+
   Category,
   Expense,
 };

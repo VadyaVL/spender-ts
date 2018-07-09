@@ -597,9 +597,23 @@
   version "10.3.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.5.tgz#8423cdf6e6fb83433e489900d7600d3b61c8260c"
 
+"@types/react-native-material-textfield@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@types/react-native-material-textfield/-/react-native-material-textfield-0.12.1.tgz#55d54c8a260a9c52eaf56552fc57b05bb290f94a"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
 "@types/react-native-material-ui@^1.19.3":
   version "1.19.3"
   resolved "https://registry.yarnpkg.com/@types/react-native-material-ui/-/react-native-material-ui-1.19.3.tgz#9d4c732fa858179a5c3b57e9f7519e13e6698f05"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native-sortable-grid@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-native-sortable-grid/-/react-native-sortable-grid-2.0.1.tgz#d6d0dba7facb5cb1e2ee186f5cbab652eb58152b"
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
@@ -5526,7 +5540,7 @@ prop-types@15.5.8:
   dependencies:
     fbjs "^0.8.9"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
+prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -5729,6 +5743,12 @@ react-native-material-design-styles@^0.2.6:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/react-native-material-design-styles/-/react-native-material-design-styles-0.2.7.tgz#428560ef4d0659db1163c9f9b5476d886ed22d57"
 
+react-native-material-textfield@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/react-native-material-textfield/-/react-native-material-textfield-0.12.0.tgz#3fba19d76ab89f67052c81e082152fc243d82a3f"
+  dependencies:
+    prop-types "^15.5.9"
+
 react-native-material-ui@^1.22.3:
   version "1.22.4"
   resolved "https://registry.yarnpkg.com/react-native-material-ui/-/react-native-material-ui-1.22.4.tgz#1dfcf897a57beadfed2fbb8512df48680528d6e0"
@@ -5775,6 +5795,10 @@ react-native-scripts-ts@1.15.0:
     qrcode-terminal "^0.11.0"
     rimraf "^2.6.1"
     xdl "48.1.4"
+
+react-native-sortable-grid@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-sortable-grid/-/react-native-sortable-grid-2.0.0.tgz#61129a4614a93b6d3ed1693a7485a036f986ce53"
 
 react-native-svg-web@^1.0.1:
   version "1.0.1"

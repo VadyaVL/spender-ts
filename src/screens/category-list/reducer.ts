@@ -14,8 +14,9 @@ const categoryReducerMethods: ReducerMethods<CategoryListState> = {
   [ActionTypes.LOAD_REQUEST]: (state) => state,
   [ActionTypes.LOAD_SUCCESS]: (state, payload: Category[]) => {
     return {...state, categories: payload};
-    // not worked
-    // return set(state, _ => _.categories)(payload);
+  },
+  [ActionTypes.ADD_CATEGORY]: (state, payload: Category) => {
+    return {...state, categories: [...state.categories, payload]};
   },
 };
 

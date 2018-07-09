@@ -28,6 +28,7 @@ import {
   ExpenseScreen,
   MainScreen,
 } from './src/screens';
+import { categoryEdit } from './src/screens/category-edit/reducer';
 import { categoryList } from './src/screens/category-list/reducer';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -35,6 +36,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   combineReducers({
     categoryList,
+    categoryEdit,
   }),
   applyMiddleware(sagaMiddleware),
 );

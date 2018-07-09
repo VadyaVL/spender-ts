@@ -55,6 +55,22 @@ export const saveTestCategory = async (): Promise<void> => {
   }
 };
 
+/**
+ * Reod: must be optimized
+ * @param category
+ */
+export const saveCategory = async (category: Category): Promise<boolean> => {
+  try {
+    const jsonData = await AsyncStorage.getItem(CATEGORIES_KEY);
+    const array: Category[] = JSON.parse(jsonData);
+    await AsyncStorage.setItem(CATEGORIES_KEY, JSON.stringify([...array, category]));
+    return true;
+  } catch (error) {
+    // Error saving data
+    return false;
+  }
+};
+
 export const getCategories = async (): Promise<Category[]> => {
   try {
     return JSON.parse(await AsyncStorage.getItem(CATEGORIES_KEY));

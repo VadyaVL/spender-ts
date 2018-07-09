@@ -24,6 +24,21 @@ export function loadCategoriesSuccess(
   };
 }
 
+export function addCategory(
+  category: Category,
+): ExpandedAction<Category> {
+  return {
+    type: ActionTypes.ADD_CATEGORY,
+    payload: category,
+  };
+}
+
+export function createCategory(): Action {
+  return {
+    type: ActionTypes.CREATE_CATEGORY,
+  };
+}
+
 // TEST
 export function saveTestCategory(): Action {
   return {
