@@ -4,7 +4,7 @@ import { ImageSourcePropType } from 'react-native';
 import { Toolbar } from 'react-native-material-ui';
 
 import { NavigationScreenProp } from 'react-navigation';
-import { CLOSE_SCREEN, OPEN_MENU } from '../../common/consts';
+import { MenuActions } from '../../common/consts';
 import { ToolbarParams } from '../../common/interfaces';
 import { PageLayout } from '../page-layout';
 
@@ -33,13 +33,13 @@ export class PageLayoutWithToolbar extends React.Component<Props> {
 
   @autobind
   private onLeftElementPress(): void {
-    const { toolbarParams } = this.props;
+    const { toolbarParams: { action } } = this.props;
 
-    switch (toolbarParams.action) {
-      case OPEN_MENU:
+    switch (action) {
+      case MenuActions.OPEN_MENU:
         this.props.navigation.openDrawer();
         break;
-      case CLOSE_SCREEN:
+      case MenuActions.CLOSE_SCREEN:
         this.props.navigation.pop();
         break;
       default:

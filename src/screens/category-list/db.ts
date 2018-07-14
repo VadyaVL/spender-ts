@@ -62,7 +62,7 @@ export const saveTestCategory = async (): Promise<void> => {
 export const saveCategory = async (category: Category): Promise<boolean> => {
   try {
     const jsonData = await AsyncStorage.getItem(CATEGORIES_KEY);
-    const array: Category[] = JSON.parse(jsonData);
+    const array: Category[] = jsonData ? JSON.parse(jsonData) : [];
     await AsyncStorage.setItem(CATEGORIES_KEY, JSON.stringify([...array, category]));
     return true;
   } catch (error) {

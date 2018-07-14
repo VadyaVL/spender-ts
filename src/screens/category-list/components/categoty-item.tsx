@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
-import { CURRENCY } from '../../../common/consts';
+import { Texts } from '../../../common/consts';
 import { Category } from '../../../common/interfaces';
 
 import spendImage from '../img/spend.jpg';
@@ -52,7 +52,7 @@ export class CategoryItem extends React.Component<Props> {
           </Text>
           <Image source={spendImage} style={styles.iconStyle} />
           <Text style={styles.valueStyle}>
-            {`${item.value} ${CURRENCY}`}
+            {`${item.value} ${Texts.CURRENCY}`}
           </Text>
         </View>
       </View>
