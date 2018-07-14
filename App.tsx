@@ -28,6 +28,7 @@ import {
   CategoryListScreen,
   ExpenseAddScreen,
   MainScreen,
+  SplashScreen,
 } from './src/screens';
 import { categoryEdit } from './src/screens/category-edit/reducer';
 import { categoryList } from './src/screens/category-list/reducer';
@@ -51,9 +52,10 @@ const rootStackNavigator: NavigationContainer = createStackNavigator(
     CategoryList: { screen: CategoryListScreen },
     CategoryEdit: { screen: CategoryEditScreen },
     ExpenseAdd: { screen: ExpenseAddScreen },
+    /* Splash: { screen: SplashScreen }, */
   },
   {
-    initialRouteName: Screens.Main,
+    initialRouteName: /* 'Splash' */ /*Screens.Main*/ Screens.ExpenseAdd,
     headerMode: 'none',
   },
 );

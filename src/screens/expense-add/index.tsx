@@ -5,6 +5,7 @@ import { NavigationScreenProp } from 'react-navigation';
 import { MenuActions } from '../../common/consts';
 import { ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
+import { CircleButton } from './components';
 
 const styles = StyleSheet.create({
   container: {
@@ -41,6 +42,9 @@ export class ExpenseAddScreen extends React.Component<Props> {
       >
         <View style={styles.container}>
           <Text>Expense</Text>
+          <CircleButton
+            text='1'
+          />
         </View>
       </PageLayoutWithToolbar>
     );
