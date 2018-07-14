@@ -7,7 +7,7 @@ import { NavigationScreenProp } from 'react-navigation';
 import { connect, Dispatch } from 'react-redux';
 import { Action } from 'redux';
 
-import { CLOSE_SCREEN } from '../../common/consts';
+import { MenuActions } from '../../common/consts';
 import { Category, ReduxState, ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
 import { Actions as CategoryListActions } from '../category-list/actions';
@@ -44,7 +44,7 @@ class CategoryEditScreenComponent extends React.Component<Props> {
   private toolbarParams: ToolbarParams = {
     centerElement: 'Edit category',
     leftElement: 'keyboard-arrow-left',
-    action: CLOSE_SCREEN,
+    action: MenuActions.CLOSE_SCREEN,
   };
 
   constructor(props: Props) {

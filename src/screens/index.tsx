@@ -1,12 +1,12 @@
 import { CategoryEditScreen } from './category-edit';
 import { CategoryListScreen } from './category-list';
-import { ExpenseScreen } from './expense';
+import { ExpenseAddScreen } from './expense-add';
 import { MainScreen } from './main';
 import { Welcome } from './welcome';
 
 export {
   Welcome,
-  ExpenseScreen,
+  ExpenseAddScreen,
   CategoryListScreen,
   CategoryEditScreen,
   MainScreen,

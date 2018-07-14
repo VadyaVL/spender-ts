@@ -1,4 +1,3 @@
-import { set } from 'monolite';
 import { AnyAction } from 'redux';
 
 import { Category, ReducerMethods } from '../../common/interfaces';

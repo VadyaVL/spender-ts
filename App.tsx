@@ -20,12 +20,13 @@ import {
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
+import { Screens } from './src/common/consts';
 import { LeftMenu } from './src/components/left-menu';
 import saga from './src/sagas';
 import {
   CategoryEditScreen,
   CategoryListScreen,
-  ExpenseScreen,
+  ExpenseAddScreen,
   MainScreen,
 } from './src/screens';
 import { categoryEdit } from './src/screens/category-edit/reducer';
@@ -44,27 +45,27 @@ sagaMiddleware.run(saga);
 
 // Article
 
-const categoryStackNavigator: NavigationContainer = createStackNavigator(
+const rootStackNavigator: NavigationContainer = createStackNavigator(
   {
     Main: { screen: MainScreen },
     CategoryList: { screen: CategoryListScreen },
     CategoryEdit: { screen: CategoryEditScreen },
-    Expense: { screen: ExpenseScreen },
+    ExpenseAdd: { screen: ExpenseAddScreen },
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: Screens.Main,
     headerMode: 'none',
   },
 );
 
 const Route: NavigationContainer = createDrawerNavigator(
   {
-    CategoryStack: { screen: categoryStackNavigator },
+    RootStack: { screen: rootStackNavigator },
     // CategoryEdit: { screen: CategoryEditScreen },
     // Stack: { screen: stackNavigator },
   },
   {
-    initialRouteName: 'CategoryStack',
+    initialRouteName: Screens.RootStack,
     contentComponent: LeftMenu,
     contentOptions: {
     style: {

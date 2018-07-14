@@ -7,7 +7,7 @@ import { NavigationScreenProp } from 'react-navigation';
 import { connect, Dispatch } from 'react-redux';
 import { Action } from 'redux';
 
-import { CLOSE_SCREEN } from '../../common/consts';
+import { MenuActions, Screens } from '../../common/consts';
 import { Orientation } from '../../common/enums';
 import { Category, ReduxState, ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
@@ -48,15 +48,11 @@ interface State {
 }
 
 class CategoryListScreenComponent extends React.Component<Props, State> {
-  public static navigationOptions = {
-    title: 'Categories',
-  };
-
   private actions: string[] = ['Add category'];
   private toolbarParams: ToolbarParams = {
     centerElement: 'Categories',
     leftElement: 'keyboard-arrow-left',
-    action: CLOSE_SCREEN,
+    action: MenuActions.CLOSE_SCREEN,
   };
 
   constructor(props: Props) {
@@ -98,7 +94,7 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
   @autobind
   private onActionBtnPress(): void {
     this.props.createCategory();
-    this.props.navigation.navigate('CategoryEdit');
+    this.props.navigation.navigate(Screens.CategoryEdit);
   }
 
   @autobind

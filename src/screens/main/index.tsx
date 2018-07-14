@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { BottomNavigation } from 'react-native-material-ui';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { OPEN_MENU } from '../../common/consts';
+import { MenuActions, Screens } from '../../common/consts';
 import { ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
 import { CategoryListNavigationProps } from '../category-list';
@@ -30,13 +30,10 @@ interface Props extends ReduxProps, ReduxActions {
 }
 
 export class MainScreen extends React.Component<Props> {
-  public static navigationOptions = {
-    title: 'Main',
-  };
   private toolbarParams: ToolbarParams = {
     centerElement: 'Main',
     leftElement: 'menu',
-    action: OPEN_MENU,
+    action: MenuActions.OPEN_MENU,
   };
 
   public render(): JSX.Element {
@@ -70,7 +67,7 @@ export class MainScreen extends React.Component<Props> {
 
   @autobind
   private onRevenuePress(): void {
-    // this.props.navigation.navigate('CategoryList');
+    // nav to revenue
   }
 
   @autobind
@@ -79,6 +76,6 @@ export class MainScreen extends React.Component<Props> {
       test: 'From MAIN',
     };
 
-    this.props.navigation.navigate('CategoryList', categoryListNavigationProps);
+    this.props.navigation.navigate(Screens.CategoryList, categoryListNavigationProps);
   }
 }

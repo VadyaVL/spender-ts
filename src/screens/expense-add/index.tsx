@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { CLOSE_SCREEN } from '../../common/consts';
+import { MenuActions } from '../../common/consts';
 import { ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
 
@@ -26,14 +26,11 @@ interface Props extends ReduxProps, ReduxActions {
   navigation: NavigationScreenProp<any, any>;
 }
 
-export class ExpenseScreen extends React.Component<Props> {
-  public static navigationOptions = {
-    title: 'Expense',
-  };
+export class ExpenseAddScreen extends React.Component<Props> {
   private toolbarParams: ToolbarParams = {
     centerElement: 'Expense',
     leftElement: 'keyboard-arrow-left',
-    action: CLOSE_SCREEN,
+    action: MenuActions.CLOSE_SCREEN,
   };
 
   public render(): JSX.Element {

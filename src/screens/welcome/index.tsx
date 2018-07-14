@@ -6,6 +6,7 @@ import { NavigationScreenProp } from 'react-navigation';
 
 import { PageLayout } from '../../components';
 
+import { Screens } from '../../common/consts';
 import backgroundImage from './img/background.jpg';
 
 interface Props {
@@ -13,11 +14,6 @@ interface Props {
 }
 
 export class Welcome extends React.Component<Props> {
-
-  public static navigationOptions = {
-    header: null,
-  };
-
   public render(): JSX.Element {
     return (
       <PageLayout backgroundImage={backgroundImage}>
@@ -54,12 +50,12 @@ export class Welcome extends React.Component<Props> {
 
   @autobind
   private navigateToCategory() {
-    this.props.navigation.navigate('Category');
+    this.props.navigation.navigate(Screens.Main);
   }
 
   @autobind
   private navigateToSpend() {
-    this.props.navigation.navigate('Spend');
+    this.props.navigation.navigate(Screens.ExpenseAdd);
   }
 }
 

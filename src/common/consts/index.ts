@@ -1,4 +1,9 @@
-export const CURRENCY = '₴';
+import * as MenuActions from './menu-actions';
+import * as Screens from './screens';
+import * as Texts from './texts';
 
-export const OPEN_MENU = 1;
-export const CLOSE_SCREEN = 2;
+export {
+  MenuActions,
+  Texts,
+  Screens,
+};
