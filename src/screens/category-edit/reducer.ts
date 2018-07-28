@@ -10,7 +10,7 @@ const INITIAL_STATE: CategoryEditState = {
 
 const reducerMethods: ReducerMethods<CategoryEditState> = {
   [ActionTypes.DROP_STATE]: () => INITIAL_STATE,
-  [ActionTypes.SET_CURRENT]: (state, payload: Category) => {
+  [ActionTypes.SET_CURRENT]: (state, payload: Category | null) => {
     return {...state, currentCategory: payload};
   },
   [ActionTypes.SET_TITLE]: (state, payload: string) => {
