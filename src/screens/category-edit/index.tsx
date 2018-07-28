@@ -4,8 +4,8 @@ import { StyleSheet, View } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
 import { Button } from 'react-native-material-ui';
 import { NavigationScreenProp } from 'react-navigation';
-import { connect, Dispatch } from 'react-redux';
-import { Action } from 'redux';
+import { connect } from 'react-redux';
+import { Action, Dispatch } from 'redux';
 
 import { MenuActions } from '../../common/consts';
 import { Category, ReduxState, ToolbarParams } from '../../common/interfaces';

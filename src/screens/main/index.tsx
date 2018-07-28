@@ -76,6 +76,6 @@ export class MainScreen extends React.Component<Props> {
       test: 'From MAIN',
     };
 
-    this.props.navigation.navigate(Screens.CategoryList, categoryListNavigationProps);
+    this.props.navigation.navigate(Screens.CategoryList/*, categoryListNavigationProps*/);
   }
 }

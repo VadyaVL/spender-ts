@@ -22,8 +22,7 @@ export class PageLayoutWithToolbar extends React.Component<Props> {
     return (
       <PageLayout {...rest}>
         <Toolbar
-          leftElement={toolbarParams.leftElement}
-          centerElement={toolbarParams.centerElement}
+          {...toolbarParams}
           onLeftElementPress={this.onLeftElementPress}
         />
         {this.props.children}

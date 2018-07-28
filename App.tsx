@@ -28,7 +28,6 @@ import {
   CategoryListScreen,
   ExpenseAddScreen,
   MainScreen,
-  SplashScreen,
 } from './src/screens';
 import { categoryEdit } from './src/screens/category-edit/reducer';
 import { categoryList } from './src/screens/category-list/reducer';
@@ -55,7 +54,7 @@ const rootStackNavigator: NavigationContainer = createStackNavigator(
     /* Splash: { screen: SplashScreen }, */
   },
   {
-    initialRouteName: /* 'Splash' */ /*Screens.Main*/ Screens.ExpenseAdd,
+    initialRouteName: Screens.CategoryList/* 'Splash' */ /*Screens.Main*//* Screens.ExpenseAdd*/,
     headerMode: 'none',
   },
 );
@@ -114,6 +113,10 @@ export default class App extends React.Component {
     );
   }
 }
+
+export {
+  App,
+};
 
 const styles = StyleSheet.create({
   container: {

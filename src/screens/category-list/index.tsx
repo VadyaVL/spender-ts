@@ -1,13 +1,13 @@
 import autobind from 'autobind-decorator';
 import * as React from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
-import { ActionButton } from 'react-native-material-ui';
-import SortableGrid from 'react-native-sortable-grid';
+import { Dimensions, GestureResponderEvent, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { ActionButton, RightElementPressEvent, ToolBarRightElement } from 'react-native-material-ui';
+import GridView from 'react-native-super-grid';
 import { NavigationScreenProp } from 'react-navigation';
-import { connect, Dispatch } from 'react-redux';
-import { Action } from 'redux';
+import { connect } from 'react-redux';
+import { Action, Dispatch } from 'redux';
 
-import { MenuActions, Screens } from '../../common/consts';
+import { MenuActions, Screens, ToolbarActions } from '../../common/consts';
 import { Orientation } from '../../common/enums';
 import { Category, ReduxState, ToolbarParams } from '../../common/interfaces';
 import { PageLayoutWithToolbar } from '../../components';
@@ -24,10 +24,14 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     /* justifyContent: 'space-between', */
   },
+  gridView: {
+    flex: 1,
+  },
 });
 
 interface ReduxProps {
   categories: Category[];
+  currentCategory: Category | null;
 }
 
 interface ReduxActions {
@@ -54,6 +58,7 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
     leftElement: 'keyboard-arrow-left',
     action: MenuActions.CLOSE_SCREEN,
   };
+  private categoryActions: string[] = [ToolbarActions.EDIT, ToolbarActions.DELETE];
 
   constructor(props: Props) {
     super(props);
@@ -66,28 +71,59 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
   }
 
   public render(): JSX.Element {
-    const { categories, navigation } = this.props;
+    const { categories, currentCategory } = this.props;
     const test: string = this.props.navigation.getParam('test', '');
+
     return (
       <PageLayoutWithToolbar
         backgroundImage={backgroundImage}
         navigation={this.props.navigation}
-        toolbarParams={this.toolbarParams}
+        toolbarParams={
+          currentCategory ?
+          { ...this.toolbarParams,
+            rightElement: {
+              actions: this.categoryActions,
+            },
+            onRightElementPress: this.toolbarRightElementClick,
+          } :
+          this.toolbarParams
+        }
       >
-        <ScrollView onLayout={this.onLayout}>
-          <Text>{test}</Text>
+        {/* <ScrollView onLayout={this.onLayout}> */}
+          {/* <Text>{test}</Text> */}
           {/* NOT GRID, NOT SORT, PRIMITIVE */}
-          <View style={styles.container}>
+          {/* <View style={styles.container}>
             {categories.map((category, index): JSX.Element => <CategoryItem key={index} item={category} />)}
-          </View>
+          </View> */}
           {/* <SortableGrid itemsPerRow={4} >
           {
             categories.map((category, index): JSX.Element => <CategoryItem key={index} item={category} />)
           }
           </SortableGrid> */}
-        </ScrollView>
+        {/* </ScrollView> */}
+        {/* <TouchableWithoutFeedback
+          onPress={this.onPress}
+        > */}
+          <View
+            style={styles.container}
+          >
+            <GridView
+              style={styles.gridView}
+              itemDimension={86}
+              items={categories}
+              renderItem={this.renderCategoryItem}
+            />
+          </View>
+        {/* </TouchableWithoutFeedback> */}
         <ActionButton actions={this.actions} onPress={this.onActionBtnPress} />
       </PageLayoutWithToolbar>
+    );
+  }
+
+  @autobind
+  private renderCategoryItem(item: Category): JSX.Element {
+    return (
+      <CategoryItem item={item} />
     );
   }
 
@@ -105,11 +141,28 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
       orientation: width < height ? Orientation.Vertical : Orientation.Horizontal,
     });
   }
+
+  @autobind
+  private toolbarRightElementClick(event: RightElementPressEvent): void {
+    switch (event.action) {
+      case ToolbarActions.EDIT:
+        break;
+      case ToolbarActions.DELETE:
+        break;
+      default:
+    }
+  }
+
+  @autobind
+  private onPress(event: GestureResponderEvent): void {
+    // console.log(event);
+  }
 }
 
 const mapStateToProps = (state: ReduxState): ReduxProps => {
   return {
     categories: state.categoryList.categories,
+    currentCategory: state.categoryEdit.currentCategory,
   };
 };
 
