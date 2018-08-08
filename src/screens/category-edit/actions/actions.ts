@@ -10,8 +10,8 @@ export function dropState(): Action {
 }
 
 export function setCurrent(
-  current: Category,
-): ExpandedAction<Category> {
+  current: Category | null,
+): ExpandedAction<Category | null> {
   return {
     type: ActionTypes.SET_CURRENT,
     payload: current,

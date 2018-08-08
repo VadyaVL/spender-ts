@@ -37,6 +37,8 @@ interface ReduxProps {
 interface ReduxActions {
   loadCategories: () => void;
   createCategory: () => void;
+  resetCategory: () => void;
+  deleteCategory: () => void;
 }
 
 export interface CategoryListNavigationProps {
@@ -146,8 +148,10 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
   private toolbarRightElementClick(event: RightElementPressEvent): void {
     switch (event.action) {
       case ToolbarActions.EDIT:
+        this.props.navigation.navigate(Screens.CategoryEdit);
         break;
       case ToolbarActions.DELETE:
+        this.props.deleteCategory();
         break;
       default:
     }
@@ -156,6 +160,7 @@ class CategoryListScreenComponent extends React.Component<Props, State> {
   @autobind
   private onPress(event: GestureResponderEvent): void {
     // console.log(event);
+    this.props.resetCategory();
   }
 }
 
@@ -179,6 +184,12 @@ const mapDispathToProps = (dispatch: Dispatch<Action>): ReduxActions => {
         icon: 0,
         value: 0,
       }));
+    },
+    resetCategory: () => {
+      dispatch(CategoryEditActions.setCurrent(null));
+    },
+    deleteCategory: () => {
+      // describe action, and dispatch it here
     },
   };
 };
