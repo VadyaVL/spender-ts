@@ -56,7 +56,7 @@ export const saveTestCategory = async (): Promise<void> => {
 };
 
 /**
- * Redo: must be optimized
+ * Reod: must be optimized
  * @param category
  */
 export const saveCategory = async (category: Category): Promise<boolean> => {

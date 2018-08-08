@@ -51,10 +51,9 @@ const rootStackNavigator: NavigationContainer = createStackNavigator(
     CategoryList: { screen: CategoryListScreen },
     CategoryEdit: { screen: CategoryEditScreen },
     ExpenseAdd: { screen: ExpenseAddScreen },
-    /* Splash: { screen: SplashScreen }, */
   },
   {
-    initialRouteName: Screens.CategoryList/* 'Splash' */ /*Screens.Main*//* Screens.ExpenseAdd*/,
+    initialRouteName: Screens.Main,
     headerMode: 'none',
   },
 );
