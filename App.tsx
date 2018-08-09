@@ -3,10 +3,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import {
-  COLOR,
-  ThemeProvider,
-} from 'react-native-material-ui';
+import { COLOR, getTheme, ThemeContext } from 'react-native-material-ui';
 import {
   createDrawerNavigator,
   createStackNavigator,
@@ -102,13 +99,13 @@ export default class App extends React.Component {
   public render(): JSX.Element {
     return (
       <Provider store={store}>
-        <ThemeProvider uiTheme={uiTheme}>
+        <ThemeContext.Provider uiTheme={getTheme(uiTheme)}>
           <View style={styles.container}>
             {/* <StackNavigator /> */}
             {/* <CategoryScreen /> */}
             <Route />
           </View>
-        </ThemeProvider>
+        </ThemeContext.Provider>
       </Provider>
     );
   }
