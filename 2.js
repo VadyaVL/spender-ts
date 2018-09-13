@@ -41,4 +41,4 @@ setTimeout(() => {
   if (treeView != null && typeof treeView.treeview == 'function') {
     treeView.treeview({data: dataTree});
   }
-}, 5000);
+}, 30000);
