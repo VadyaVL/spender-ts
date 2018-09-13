@@ -1,6 +1,4 @@
-
-
-window.onload = () => {
+setTimeout(() => {
   console.log('worked');
   var dataTree = [
     {
@@ -43,4 +41,4 @@ window.onload = () => {
   if (treeView != null && typeof treeView.treeview == 'function') {
     treeView.treeview({data: dataTree});
   }
-};
+}, 5000);
