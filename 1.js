@@ -32,7 +32,7 @@ var dataTree = [
           }
         ];
          
-        var treeView = $('#tree-view', currentTask);
+        var treeView = $('#tree-view');
         
         console.log(treeView);
         console.log(treeView.treeview);
