@@ -42,3 +42,7 @@ setTimeout(() => {
     treeView.treeview({data: dataTree});
   }
 }, 30000);
+
+function say(wta) {
+  console.log(wta);
+}
